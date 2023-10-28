@@ -3,9 +3,13 @@ import { SyntheticEvent, useLayoutEffect, useState, FC, useMemo } from "react";
 import { ResizableBox, ResizeCallbackData } from "react-resizable";
 import clsx from "clsx";
 
-export const Sidebar: FC = () => {
+type SidebarContainerProps = {
+	children?: React.ReactNode;
+};
+
+export const SidebarContainer: FC<SidebarContainerProps> = ({ children }) => {
 	const [height, setHeight] = useState(0);
-	const [width, setWidth] = useState(220);
+	const [width, setWidth] = useState(300);
 	const [dragging, setDragging] = useState(false);
 
 	useLayoutEffect(() => {
@@ -20,8 +24,9 @@ export const Sidebar: FC = () => {
 		() => (
 			<span
 				className={clsx(
-					"w-[2px] h-full absolute right-0 top-0 z-20",
-					"transition-all duration-300 bg-gray-600/10 hover:bg-gray-600/30",
+					"w-[2px] h-full absolute right-[-2px] top-0 z-20",
+					"transition-all duration-300",
+					"bg-gray-600/10 hover:bg-gray-600/30",
 					{
 						"hover:bg-gray-600/30": dragging,
 						"cursor-col-resize": !dragging,
@@ -36,7 +41,7 @@ export const Sidebar: FC = () => {
 		<ResizableBox
 			width={width}
 			height={height}
-			minConstraints={[220, height]}
+			minConstraints={[245, height]}
 			maxConstraints={[390, height]}
 			onResize={(e: SyntheticEvent, data: ResizeCallbackData) => {
 				setWidth(data.size.width);
@@ -51,6 +56,8 @@ export const Sidebar: FC = () => {
 				position: "relative",
 			}}
 			className="bg-[#fbfbfa]"
-		></ResizableBox>
+		>
+			{children}
+		</ResizableBox>
 	);
 };
