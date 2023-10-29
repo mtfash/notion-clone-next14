@@ -5,7 +5,7 @@ import SimpleButton from "@/components/button/simple-button";
 import ExpandIcon from "@/components/icons/expand";
 import ChevronLeftIcon from "@/components/icons/chevron-left";
 
-export const UserProfileButton: FC = () => {
+export const ActionButton: FC = () => {
 	return (
 		<SimpleButton className="flex items-center justify-between gap-2">
 			<div className="flex items-center gap-2 flex-shrink">
@@ -22,7 +22,7 @@ export const UserProfileButton: FC = () => {
 				<ExpandIcon />
 			</div>
 
-			<SimpleButton className="hover:bg-gray-300/60 flex-shrink-0">
+			<SimpleButton className="hover:bg-gray-300/60 p-2 px-2 py-2 aspect-square flex items-center justify-center">
 				<ChevronLeftIcon />
 			</SimpleButton>
 		</SimpleButton>

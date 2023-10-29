@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 import * as React from "react";
 
 type SimpleButtonProps = {
@@ -11,7 +11,10 @@ const SimpleButton = (
 	ref: React.ForwardedRef<HTMLDivElement>
 ) => (
 	<div
-		className={clsx("rounded-[4px] px-[10px] p-[5px] hover:bg-[#ebebea]", className)}
+		className={cn(
+			"rounded-[4px] px-[10px] p-[5px] hover:bg-[#ebebea]",
+			className
+		)}
 		ref={ref}
 		role="button"
 		{...rest}

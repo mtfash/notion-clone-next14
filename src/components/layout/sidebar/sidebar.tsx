@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { SidebarContainer } from "./sidebar-container";
-import { UserProfileButton } from "./user-profile-button";
+import { ActionButton } from "./action-button";
 import SimpleButton from "@/components/button/simple-button";
 import SearchIcon from "@/components/icons/search";
 import ClockIcon from "@/components/icons/clock";
@@ -11,7 +11,7 @@ export const Sidebar: FC = () => {
 	return (
 		<SidebarContainer>
 			<div className="p-1">
-				<UserProfileButton />
+				<ActionButton />
 				<SimpleButton className="flex items-center gap-2 font-medium text-black/40">
 					<SearchIcon />
 					Search
