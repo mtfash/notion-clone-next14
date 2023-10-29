@@ -24,7 +24,7 @@ export const SidebarContainer: FC<SidebarContainerProps> = ({ children }) => {
 		() => (
 			<span
 				className={clsx(
-					"w-[2px] h-full absolute right-[-2px] top-0 z-20",
+					"w-[2px] h-full absolute right-[-2px] top-0 z-10",
 					"transition-all duration-300",
 					"bg-gray-600/10 hover:bg-gray-600/30",
 					{
