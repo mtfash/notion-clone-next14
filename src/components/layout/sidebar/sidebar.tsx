@@ -2,10 +2,10 @@ import { FC } from "react";
 import { SidebarContainer } from "./sidebar-container";
 import { ActionButton } from "./action-button";
 import SimpleButton from "@/components/button/simple-button";
-import SearchIcon from "@/components/icons/search";
-import ClockIcon from "@/components/icons/clock";
-import GearIcon from "@/components/icons/gear";
-import PlusIcon from "@/components/icons/plus";
+import Search from "@/components/icons/search";
+import Clock from "@/components/icons/clock";
+import Gear from "@/components/icons/gear";
+import Plus from "@/components/icons/plus";
 
 export const Sidebar: FC = () => {
 	return (
@@ -13,19 +13,19 @@ export const Sidebar: FC = () => {
 			<div className="p-1">
 				<ActionButton />
 				<SimpleButton className="flex items-center gap-2 font-medium text-black/40">
-					<SearchIcon />
+					<Search className="opacity-40" />
 					Search
 				</SimpleButton>
 				<SimpleButton className="flex items-center gap-2 font-medium text-black/40">
-					<ClockIcon />
+					<Clock className="opacity-40" />
 					Updates
 				</SimpleButton>
 				<SimpleButton className="flex items-center gap-2 font-medium text-black/40">
-					<GearIcon />
+					<Gear className="opacity-40" />
 					Settings & members
 				</SimpleButton>
 				<SimpleButton className="flex items-center gap-2 font-medium text-black/40">
-					<PlusIcon />
+					<Plus className="opacity-40" />
 					New page
 				</SimpleButton>
 			</div>

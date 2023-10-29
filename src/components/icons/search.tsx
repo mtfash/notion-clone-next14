@@ -1,9 +1,15 @@
-export default function SearchIcon() {
+import { cn } from "@/lib/utils";
+import { IconProps } from "./icon-props";
+
+export default function Search({ className }: IconProps) {
 	return (
 		<svg
 			role="graphics-symbol"
 			viewBox="0 0 20 20"
-			className="w-[20px] h-[20px] d-block fill-black opacity-40 flex-shrink-0"
+			className={cn(
+				"w-[20px] h-[20px] d-block fill-black flex-shrink-0",
+				className
+			)}
 		>
 			<path
 				fillRule="evenodd"

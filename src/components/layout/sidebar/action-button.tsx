@@ -23,7 +23,7 @@ export const ActionButton: FC = () => {
 			</div>
 
 			<SimpleButton className="hover:bg-gray-300/60 p-2 px-2 py-2 aspect-square flex items-center justify-center">
-				<ChevronLeftIcon />
+				<ChevronLeftIcon className="fill-gray-400" />
 			</SimpleButton>
 		</SimpleButton>
 	);

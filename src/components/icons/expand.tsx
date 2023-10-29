@@ -1,9 +1,15 @@
-export default function ExpandIcon() {
+import { cn } from "@/lib/utils";
+import { IconProps } from "./icon-props";
+
+export default function Expand({ className }: IconProps) {
 	return (
 		<svg
 			role="graphics-symbol"
 			viewBox="-1 -1 9 11"
-			className="w-3 h-3 d-block fill-gray-400 flex-shrink-0"
+			className={cn(
+				"w-3 h-3 d-block fill-gray-400 flex-shrink-0",
+				className
+			)}
 		>
 			<path
 				id="path0_stroke"
