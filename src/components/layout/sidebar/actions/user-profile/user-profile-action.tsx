@@ -1,18 +1,23 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useOverlayStack } from "@/components/overlay-stack";
 import ExpandIcon from "@/components/icons/expand";
 import SimpleButton from "@/components/button/simple-button";
 import ChevronLeftIcon from "@/components/icons/chevron-left";
 import SwitchAccountDialog from "./switch-account-dialog";
 
 export default function UserProfileAction() {
-	const [isOpen, setIsOpen] = useState(false);
+	const { push } = useOverlayStack();
+
+	const handleClick = () => {
+		push(<SwitchAccountDialog />);
+	};
+
 	return (
 		<>
 			<SimpleButton
 				className="flex items-center justify-between gap-2"
-				onClick={() => setIsOpen(true)}
+				onClick={handleClick}
 			>
 				<div className="flex items-center gap-2 flex-shrink">
 					<Image
@@ -35,11 +40,6 @@ export default function UserProfileAction() {
 					<ChevronLeftIcon className="fill-gray-400" />
 				</SimpleButton>
 			</SimpleButton>
-
-			<SwitchAccountDialog
-				isOpen={isOpen}
-				close={() => setIsOpen(false)}
-			/>
 		</>
 	);
 }
