@@ -3,7 +3,6 @@ import * as React from "react";
 
 type SimpleButtonProps = {
 	isLoading?: boolean;
-	className?: string;
 } & React.ComponentPropsWithRef<"div">;
 
 const SimpleButton = (
