@@ -7,6 +7,7 @@ import { useOverlayStack } from "@/components/overlay-stack";
 import RelativeFixed from "@/components/relative-fixed";
 import PlusSquare from "@/components/icons/plus-square";
 import RemoveCircle from "@/components/icons/remove-circle";
+import IconButton from "@/components/button/icon-button";
 
 export default function SwitchAccountDialog() {
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -38,9 +39,9 @@ export default function SwitchAccountDialog() {
         <div className="flex items-center justify-between px-[8px] pb-[8px]">
           <div className="text-xs font-medium text-black/50">someone@gmail.com</div>
 
-          <SimpleButton ref={buttonRef} onClick={handleClick}>
-            <Dots />
-          </SimpleButton>
+          <IconButton ref={buttonRef} onClick={handleClick} size="sm">
+            <Dots size="sm" />
+          </IconButton>
         </div>
         <AccountList />
       </div>

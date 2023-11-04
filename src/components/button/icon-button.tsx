@@ -1,20 +1,20 @@
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-type SimpleButtonProps = {
+type IconButtonProps = {
   isLoading?: boolean;
   size?: "sm" | "md" | "lg";
 } & React.ComponentPropsWithRef<"div">;
 
-const SimpleButton = (
-  { children, className, size = "md", ...rest }: SimpleButtonProps,
+const IconButton = (
+  { children, className, size = "md", ...rest }: IconButtonProps,
   ref: React.ForwardedRef<HTMLDivElement>
 ) => (
   <div
     ref={ref}
     role="button"
     className={cn(
-      "hover:bg-[#efefef]",
+      "hover:bg-[#efefef] aspect-square flex items-center justify-center",
       {
         "rounded-[4px] px-[10px] py-[4px]": size === "md",
         "rounded-[4px] px-[6px] py-[2px]": size === "sm",
@@ -27,4 +27,4 @@ const SimpleButton = (
   </div>
 );
 
-export default React.forwardRef<HTMLDivElement, SimpleButtonProps>(SimpleButton);
+export default React.forwardRef<HTMLDivElement, IconButtonProps>(IconButton);
