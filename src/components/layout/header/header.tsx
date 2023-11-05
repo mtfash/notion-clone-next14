@@ -1,25 +1,34 @@
 "use client";
-
-import Breadcrumbs from "@/components/breadcrumb";
-import IconButton from "@/components/button/icon-button";
-import SimpleButton from "@/components/button/simple-button";
-import Clock from "@/components/icons/clock";
-import Dots from "@/components/icons/dots";
-import Message from "@/components/icons/message";
-import Star from "@/components/icons/star";
+import { useRef } from "react";
 import { useOverlayStack } from "@/components/overlay-stack";
+import { cn } from "@/lib/utils";
 import RelativeFixed from "@/components/relative-fixed";
 import SettingsMenu from "@/components/settings/settings-menu";
+import SimpleButton from "@/components/button/simple-button";
+import Breadcrumbs from "@/components/breadcrumb";
+import IconButton from "@/components/button/icon-button";
+import Message from "@/components/icons/message";
+import Clock from "@/components/icons/clock";
 import Share from "@/components/share/share";
-import { useRef } from "react";
+import Dots from "@/components/icons/dots";
+import Star from "@/components/icons/star";
 
-export default function Header() {
+type HeaderProps = {
+  className?: string;
+};
+
+export default function Header({ className }: HeaderProps) {
   const settingsButtonRef = useRef<HTMLDivElement>(null);
 
   const { push } = useOverlayStack();
 
   return (
-    <header className="flex items-center justify-between px-4 pt-[8px]">
+    <header
+      className={cn(
+        "flex items-center justify-between px-4 py-[8px] sticky top-0 left-0 right-0 bg-white",
+        className
+      )}
+    >
       <Breadcrumbs />
 
       <div className="flex items-stretch gap-[2px]">
