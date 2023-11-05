@@ -7,6 +7,7 @@ import SimpleButton from "@/components/button/simple-button";
 import RelativeFixed from "@/components/relative-fixed";
 import ChevronLeftIcon from "@/components/icons/chevron-left";
 import SwitchAccountDialog from "./switch-account-dialog";
+import IconButton from "@/components/button/icon-button";
 
 export default function UserProfileAction() {
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -30,7 +31,7 @@ export default function UserProfileAction() {
   return (
     <>
       <SimpleButton
-        className="flex items-center justify-between gap-2"
+        className="flex items-center justify-between gap-2 py-2"
         onClick={handleClick}
         ref={buttonRef}
       >
@@ -42,12 +43,12 @@ export default function UserProfileAction() {
           <ExpandIcon />
         </div>
 
-        <SimpleButton
-          className="hover:bg-gray-300/60 p-2 px-2 py-2 aspect-square flex items-center justify-center"
+        <IconButton
+          className="hover:bg-gray-300/60 w-[24px] h-[24px]"
           onClick={(e) => e.stopPropagation()}
         >
-          <ChevronLeftIcon className="fill-gray-400" />
-        </SimpleButton>
+          <ChevronLeftIcon className="fill-gray-400 w-[12px]" />
+        </IconButton>
       </SimpleButton>
     </>
   );
