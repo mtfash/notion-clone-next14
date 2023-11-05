@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useOverlayStack } from "../overlay-stack";
 import { cn } from "@/lib/utils";
+import ConnectionsListMenu from "./connections-list-menu";
 import ChevronSingleRight from "../icons/chevron-single-right";
 import GetNotifiedMenu from "./get-notified-menu";
 import AnalyticsMenu from "./analytics-menu";
@@ -21,7 +22,6 @@ import Lock from "../icons/lock";
 import Bell from "../icons/bell";
 import Link from "../icons/link";
 import Add from "../icons/add";
-import ConnectionsListMenu from "./connections-list-menu";
 
 export default function SettingsMenu() {
   const showMenuBtnRef = useRef<HTMLDivElement>(null);

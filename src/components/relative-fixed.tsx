@@ -33,8 +33,8 @@ type Position = TopLeftPosition | TopRightPosition | BottomRightPosition | Botto
 type Side = "top-right" | "bottom-right" | "bottom-left" | "top-left";
 
 type RelativeFixedProps = {
-  relativeTo: HTMLElement | null;
-  side: Side;
+  relativeTo?: HTMLElement | null;
+  side?: Side;
   position: Position;
 } & React.ComponentPropsWithRef<"div">;
 
@@ -63,8 +63,8 @@ const RelativeFixed = (
 
 export default React.forwardRef<HTMLDivElement, RelativeFixedProps>(RelativeFixed);
 
-function getRelativePosition(side: Side, position: Position, relativeTo: HTMLElement | null) {
-  if (!relativeTo) {
+function getRelativePosition(side?: Side, position?: Position, relativeTo?: HTMLElement | null) {
+  if (!relativeTo || !position) {
     return position;
   }
 

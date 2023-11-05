@@ -10,22 +10,13 @@ import Star from "@/components/icons/star";
 import { useOverlayStack } from "@/components/overlay-stack";
 import RelativeFixed from "@/components/relative-fixed";
 import SettingsMenu from "@/components/settings/settings-menu";
+import Share from "@/components/share/share";
 import { useRef } from "react";
 
 export default function Header() {
   const settingsButtonRef = useRef<HTMLDivElement>(null);
-  const { push } = useOverlayStack();
 
-  const showSettingsMenu = () =>
-    push(
-      <RelativeFixed
-        relativeTo={settingsButtonRef.current}
-        side="bottom-right"
-        position={{ top: 0, right: 0 }}
-      >
-        <SettingsMenu />
-      </RelativeFixed>
-    );
+  const { push } = useOverlayStack();
 
   return (
     <header className="flex items-center justify-between px-4 pt-[8px]">
@@ -35,7 +26,17 @@ export default function Header() {
         <div className="text-black/50 cursor-default flex items-center justify-center mr-4">
           Edited 8 Feb
         </div>
-        <SimpleButton size="sm" className="text-black/80 flex items-center justify-center">
+        <SimpleButton
+          size="sm"
+          className="text-black/80 flex items-center justify-center"
+          onClick={() =>
+            push(
+              <RelativeFixed position={{ top: 50, right: 5 }}>
+                <Share />
+              </RelativeFixed>
+            )
+          }
+        >
           Share
         </SimpleButton>
         <IconButton size="sm">
@@ -47,7 +48,21 @@ export default function Header() {
         <IconButton size="sm">
           <Star className="fill-black/70" />
         </IconButton>
-        <IconButton size="sm" ref={settingsButtonRef} onClick={showSettingsMenu}>
+        <IconButton
+          size="sm"
+          ref={settingsButtonRef}
+          onClick={() =>
+            push(
+              <RelativeFixed
+                relativeTo={settingsButtonRef.current}
+                position={{ top: 0, right: 0 }}
+                side="bottom-right"
+              >
+                <SettingsMenu />
+              </RelativeFixed>
+            )
+          }
+        >
           <Dots className="fill-black/70" size="md" />
         </IconButton>
       </div>
