@@ -9,7 +9,7 @@ import Message from "@/components/icons/message";
 import Star from "@/components/icons/star";
 import { useOverlayStack } from "@/components/overlay-stack";
 import RelativeFixed from "@/components/relative-fixed";
-import SettingsMenu from "@/components/settings-menu";
+import SettingsMenu from "@/components/settings/settings-menu";
 import { useRef } from "react";
 
 export default function Header() {

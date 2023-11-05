@@ -1,11 +1,34 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-type Position = {
-  left?: number;
-  right?: number;
-  top?: number;
-  bottom?: number;
+type TopLeftPosition = {
+  top: number | string;
+  left: number | string;
+  right?: undefined;
+  bottom?: undefined;
 };
+
+type TopRightPosition = {
+  top: number | string;
+  right: number | string;
+  left?: undefined;
+  bottom?: undefined;
+};
+
+type BottomRightPosition = {
+  top?: undefined;
+  left?: undefined;
+  bottom: number | string;
+  right: number | string;
+};
+
+type BottomLeftPosition = {
+  top?: undefined;
+  right?: undefined;
+  bottom: number | string;
+  left: number | string;
+};
+
+type Position = TopLeftPosition | TopRightPosition | BottomRightPosition | BottomLeftPosition;
 
 type Side = "top-right" | "bottom-right" | "bottom-left" | "top-left";
 
@@ -46,78 +69,110 @@ function getRelativePosition(side: Side, position: Position, relativeTo: HTMLEle
   }
 
   const rect = relativeTo.getBoundingClientRect();
-  const _position: Position = {};
+  const _position: any = {};
 
   switch (side) {
     case "bottom-left":
-      if (typeof position.left !== "undefined") {
+      if (typeof position.left === "number") {
         _position.left = rect.left + position.left;
+      } else if (typeof position.left === "string") {
+        _position.left = position.left;
       }
 
-      if (typeof position.right !== "undefined") {
+      if (typeof position.right === "number") {
         const rightDistance = window.innerWidth - rect.right;
         _position.right = rightDistance + rect.width + position.right;
+      } else if (typeof position.right === "string") {
+        _position.right = position.right;
       }
 
-      if (typeof position.top !== "undefined") {
+      if (typeof position.top === "number") {
         _position.top = rect.bottom + position.top;
+      } else if (typeof position.top === "string") {
+        _position.top = position.top;
       }
 
-      if (typeof position.bottom !== "undefined") {
+      if (typeof position.bottom === "number") {
         _position.bottom = window.innerHeight - (rect.bottom - position.bottom);
+      } else if (typeof position.bottom === "string") {
+        _position.bottom = position.bottom;
       }
       break;
     case "bottom-right":
-      if (typeof position.left !== "undefined") {
+      if (typeof position.left === "number") {
         _position.left = rect.right + position.left;
+      } else if (typeof position.left === "string") {
+        _position.left = position.left;
       }
 
-      if (typeof position.right !== "undefined") {
+      if (typeof position.right === "number") {
         _position.right = window.innerWidth - rect.right + position.right;
+      } else if (typeof position.right === "string") {
+        _position.right = position.right;
       }
 
-      if (typeof position.top !== "undefined") {
+      if (typeof position.top === "number") {
         _position.top = rect.bottom + position.top;
+      } else if (typeof position.top === "string") {
+        _position.top = position.top;
       }
 
-      if (typeof position.bottom !== "undefined") {
+      if (typeof position.bottom === "number") {
         _position.bottom = window.innerHeight - (rect.bottom - position.bottom);
+      } else if (typeof position.bottom === "string") {
+        _position.bottom = position.bottom;
       }
       break;
     case "top-left":
-      if (typeof position.left !== "undefined") {
+      if (typeof position.left === "number") {
         _position.left = rect.left + position.left;
+      } else if (typeof position.left === "string") {
+        _position.left = position.left;
       }
 
-      if (typeof position.right !== "undefined") {
+      if (typeof position.right === "number") {
         const rightDistance = window.innerWidth - rect.right;
         _position.right = rightDistance + rect.width + position.right;
+      } else if (typeof position.right === "string") {
+        _position.right = position.right;
       }
 
-      if (typeof position.top !== "undefined") {
+      if (typeof position.top === "number") {
         _position.top = rect.top + position.top;
+      } else if (typeof position.top === "string") {
+        _position.top = position.top;
       }
 
-      if (typeof position.bottom !== "undefined") {
+      if (typeof position.bottom === "number") {
         _position.bottom = window.innerHeight - rect.top + position.bottom;
+      } else if (typeof position.bottom === "string") {
+        _position.bottom = position.bottom;
       }
       break;
 
     case "top-right":
-      if (typeof position.left !== "undefined") {
+      if (typeof position.left === "number") {
         _position.left = rect.right + position.left;
+      } else if (typeof position.left === "string") {
+        _position.left = position.left;
       }
 
-      if (typeof position.right !== "undefined") {
+      if (typeof position.right === "number") {
         _position.right = window.innerWidth - rect.right + position.right;
+      } else if (typeof position.right === "string") {
+        _position.right = position.right;
       }
 
-      if (typeof position.top !== "undefined") {
+      if (typeof position.top === "number") {
         _position.top = rect.top + position.top;
+      } else if (typeof position.top === "string") {
+        _position.top = position.top;
       }
 
-      if (typeof position.bottom !== "undefined") {
+      if (typeof position.bottom === "number") {
         _position.bottom = window.innerHeight - rect.top + position.bottom;
+      } else if (typeof position.bottom === "string") {
+        _position.bottom = position.bottom;
       }
       break;
   }
