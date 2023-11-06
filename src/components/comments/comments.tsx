@@ -5,7 +5,7 @@ import MessageBubbles from "@/components/icons/message-bubbles";
 export default function Comments() {
   return (
     <>
-      <div className="flex items-center justify-between pl-6 py-3 border-b border-[#e8e8e8]">
+      <div className="flex items-center justify-between px-3 py-3 border-b border-[#e8e8e8]">
         <div className="font-medium">Comments</div>
         <SimpleButton className="flex items-center gap-1 text-sm text-black/60">
           Open

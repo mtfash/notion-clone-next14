@@ -24,57 +24,57 @@ export default function Header({ className }: HeaderProps) {
   const { push } = useOverlayStack();
 
   return (
-    <header className={cn("flex items-center justify-between bg-white pl-4", className)}>
+    <header
+      className={cn(
+        "flex items-center justify-between pl-4 absolute w-full bg-white py-[8px] px-4",
+        className
+      )}
+      style={{ zIndex: 100 }}
+    >
       <Breadcrumbs />
-      <div className="flex justify-between items-center gap-[2px] w-[385px] border-l border-[#e8e8e] py-[8px] px-4">
-        <IconButton className="w-[24px] h-[24px] aspect-square">
-          <ChevronLeft className="w-[12px] fill-black/50 transform -scale-x-100" />
-        </IconButton>
-
-        <div className="flex items-center">
-          <div className="text-black/50 cursor-default flex items-center justify-center mr-4">
-            Edited 8 Feb
-          </div>
-          <SimpleButton
-            size="sm"
-            className="text-black/80 flex items-center justify-center"
-            onClick={() =>
-              push(
-                <RelativeFixed position={{ top: 50, right: 10 }}>
-                  <Share />
-                </RelativeFixed>
-              )
-            }
-          >
-            Share
-          </SimpleButton>
-          <IconButton size="sm">
-            <Message className="fill-black/70" />
-          </IconButton>
-          <IconButton size="sm">
-            <Clock className="fill-black/70" size="md" />
-          </IconButton>
-          <IconButton size="sm">
-            <Star className="fill-black/70" />
-          </IconButton>
-          <IconButton
-            size="sm"
-            ref={settingsButtonRef}
-            onClick={() =>
-              push(
-                <RelativeFixed
-                  relativeTo={settingsButtonRef.current}
-                  position={{ top: 0, right: 0 }}
-                  side="bottom-right"
-                >
-                  <SettingsMenu />
-                </RelativeFixed>
-              )
-            }
-          >
-            <Dots className="fill-black/70" size="md" />
-          </IconButton>
+      <div className="flex justify-end items-center gap-[2px] w-[385px]">
+        <div className="text-black/50 cursor-default flex items-center justify-center mr-4">
+          Edited 8 Feb
         </div>
+        <SimpleButton
+          size="sm"
+          className="text-black/80 flex items-center justify-center"
+          onClick={() =>
+            push(
+              <RelativeFixed position={{ top: 50, right: 10 }}>
+                <Share />
+              </RelativeFixed>
+            )
+          }
+        >
+          Share
+        </SimpleButton>
+        <IconButton size="sm">
+          <Message className="fill-black/70" />
+        </IconButton>
+        <IconButton size="sm">
+          <Clock className="fill-black/70" size="md" />
+        </IconButton>
+        <IconButton size="sm">
+          <Star className="fill-black/70" />
+        </IconButton>
+        <IconButton
+          size="sm"
+          ref={settingsButtonRef}
+          onClick={() =>
+            push(
+              <RelativeFixed
+                relativeTo={settingsButtonRef.current}
+                position={{ top: 0, right: 0 }}
+                side="bottom-right"
+              >
+                <SettingsMenu />
+              </RelativeFixed>
+            )
+          }
+        >
+          <Dots className="fill-black/70" size="md" />
+        </IconButton>
       </div>
     </header>
   );

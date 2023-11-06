@@ -2,6 +2,7 @@
 import { SyntheticEvent, useLayoutEffect, useState, FC, useMemo } from "react";
 import { ResizableBox, ResizeCallbackData } from "react-resizable";
 import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 type SidebarContainerProps = {
   children?: React.ReactNode;
@@ -23,7 +24,7 @@ export const SidebarContainer: FC<SidebarContainerProps> = ({ children }) => {
   const handle = useMemo(
     () => (
       <span
-        className={clsx(
+        className={cn(
           "w-[2px] h-full absolute right-[-2px] top-0",
           "transition-all duration-300",
           "bg-gray-600/10 hover:bg-gray-600/30",
@@ -32,7 +33,7 @@ export const SidebarContainer: FC<SidebarContainerProps> = ({ children }) => {
             "cursor-col-resize": !dragging,
           }
         )}
-				style={{zIndex: 1000}}
+        style={{ zIndex: 1000 }}
       ></span>
     ),
     [dragging]
