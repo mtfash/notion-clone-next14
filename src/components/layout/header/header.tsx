@@ -13,6 +13,7 @@ import Share from "@/components/share/share";
 import Dots from "@/components/icons/dots";
 import Star from "@/components/icons/star";
 import ChevronLeft from "@/components/icons/chevron-left";
+import { useSidepeek } from "../sidepeek/sidepeek";
 
 type HeaderProps = {
   className?: string;
@@ -22,7 +23,7 @@ export default function Header({ className }: HeaderProps) {
   const settingsButtonRef = useRef<HTMLDivElement>(null);
 
   const { push } = useOverlayStack();
-
+  const { toggle: toggleSidepeek } = useSidepeek();
   return (
     <header
       className={cn(
@@ -52,7 +53,7 @@ export default function Header({ className }: HeaderProps) {
         <IconButton size="sm">
           <Message className="fill-black/70" />
         </IconButton>
-        <IconButton size="sm">
+        <IconButton size="sm" onClick={() => toggleSidepeek()}>
           <Clock className="fill-black/70" size="md" />
         </IconButton>
         <IconButton size="sm">

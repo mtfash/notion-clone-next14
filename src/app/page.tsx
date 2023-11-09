@@ -1,7 +1,5 @@
-import { Sidebar } from "@/components/layout/sidebar/sidebar";
-import Sidepeek from "@/components/layout/sidepeek/sidepeek";
+import Sidebar from "@/components/layout/sidebar/sidebar";
 import Header from "@/components/layout/header/header";
-import Main from "@/components/main";
 
 export default function Home() {
   return (
@@ -11,9 +9,7 @@ export default function Home() {
         <Header />
 
         <div className="bg-white flex items-stretch h-full">
-          <Main />
-
-          <Sidepeek />
+          <div className="bg-white w-full h-full flex-1 text-center justify-center items-center flex"></div>
         </div>
       </div>
     </div>

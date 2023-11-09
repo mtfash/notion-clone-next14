@@ -6,18 +6,15 @@ import { cn } from "@/lib/utils";
 import IconButton from "@/components/button/icon-button";
 import ChevronLeft from "@/components/icons/chevron-left";
 
-export default function Main() {
-  const [height, setHeight] = useState(1200);
-  const [width, setWidth] = useState(600);
-  const [dragging, setDragging] = useState(false);
+type ResizableContainerProps = {
+  minWidth: number;
+  initialWidth: number;
+  children: React.ReactNode;
+};
 
-  useLayoutEffect(() => {
-    const windowResizeHandler = () => setHeight(window.innerHeight);
-    window.addEventListener("resize", windowResizeHandler);
-    windowResizeHandler();
-
-    return () => window.removeEventListener("resize", windowResizeHandler);
-  }, []);
+export default function ResizableContainer({ initialWidth, children }: ResizableContainerProps) {
+  const [width, setWidth] = useState(initialWidth);
+  const [height, setHeight] = useState(0);
 
   const handle = useMemo(
     () => (
@@ -25,11 +22,7 @@ export default function Main() {
         className={cn(
           "w-[2px] h-screen absolute right-0 top-0",
           "transition-all duration-300",
-          "bg-gray-600/10",
-          {
-            "bg-gray-600/30": dragging,
-            "cursor-col-resize": !dragging,
-          }
+          "bg-gray-600/10 hover:bg-gray-600/30"
         )}
         style={{ zIndex: 101 }}
       >
@@ -38,9 +31,16 @@ export default function Main() {
         </IconButton>
       </div>
     ),
-    [dragging]
+    []
   );
 
+  useLayoutEffect(() => {
+    const windowResizeHandler = () => setHeight(window.innerHeight);
+    window.addEventListener("resize", windowResizeHandler);
+    windowResizeHandler();
+
+    return () => window.removeEventListener("resize", windowResizeHandler);
+  }, []);
   return (
     <ResizableBox
       className="h-full pt-[48px]"
@@ -49,18 +49,15 @@ export default function Main() {
       minConstraints={[600, height]}
       onResize={(e: SyntheticEvent, data: ResizeCallbackData) => {
         setWidth(data.size.width);
-        setDragging(true);
       }}
-      onResizeStop={() => {
-        setDragging(false);
-      }}
+      onResizeStop={() => {}}
       handle={handle}
       axis="x"
       style={{
         position: "relative",
       }}
     >
-      <div className="bg-white w-full h-full flex-1 text-center justify-center items-center flex"></div>
+      {children}
     </ResizableBox>
   );
 }

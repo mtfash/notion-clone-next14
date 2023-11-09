@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React from "react";
 import { SidebarContainer } from "./sidebar-container";
 import UserProfileAction from "./actions/user-profile/user-profile-action";
 import SimpleButton from "@/components/button/simple-button";
@@ -7,7 +7,7 @@ import Clock from "@/components/icons/clock";
 import Gear from "@/components/icons/gear";
 import Plus from "@/components/icons/plus";
 
-export const Sidebar: FC = () => {
+function Sidebar() {
   return (
     <SidebarContainer>
       <div className="p-1">
@@ -31,4 +31,6 @@ export const Sidebar: FC = () => {
       </div>
     </SidebarContainer>
   );
-};
+}
+
+export default Sidebar;

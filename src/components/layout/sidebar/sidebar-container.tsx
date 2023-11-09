@@ -1,7 +1,6 @@
 "use client";
 import { SyntheticEvent, useLayoutEffect, useState, FC, useMemo } from "react";
 import { ResizableBox, ResizeCallbackData } from "react-resizable";
-import clsx from "clsx";
 import { cn } from "@/lib/utils";
 
 type SidebarContainerProps = {
