@@ -4,7 +4,7 @@ import { ResizableBox, ResizeCallbackData } from "react-resizable";
 import { cn } from "@/lib/utils";
 
 type SidebarContainerProps = {
-  children?: React.ReactNode;
+  children?: React.ReactNode | React.ReactNode[];
 };
 
 export const SidebarContainer: FC<SidebarContainerProps> = ({ children }) => {
@@ -56,7 +56,7 @@ export const SidebarContainer: FC<SidebarContainerProps> = ({ children }) => {
       style={{
         position: "relative",
       }}
-      className="bg-[#fbfbfa]"
+      className="bg-[#fbfbfa] flex flex-col items-stretch"
     >
       {children}
     </ResizableBox>

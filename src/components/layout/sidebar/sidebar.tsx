@@ -6,6 +6,7 @@ import Search from "@/components/icons/search";
 import Clock from "@/components/icons/clock";
 import Gear from "@/components/icons/gear";
 import Plus from "@/components/icons/plus";
+import TreeExplorer from "@/components/explorer/tree-explorer";
 
 function Sidebar() {
   return (
@@ -28,6 +29,9 @@ function Sidebar() {
           <Plus className="fill-black/40" />
           New page
         </SimpleButton>
+      </div>
+      <div className="flex-1 overflow-y-auto px-1">
+        <TreeExplorer />
       </div>
     </SidebarContainer>
   );
