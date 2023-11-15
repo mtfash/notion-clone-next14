@@ -1,11 +1,57 @@
+"use client";
+
+import { useCallback } from "react";
 import ExplorerEntry from "./entry";
 
 export default function TreeExplorer() {
+  const childEntries = useCallback(
+    async (level: number) => [
+      {
+        title: "Cheri Cheri Lady",
+        level: level + 1,
+        icon: <span>📌</span>,
+        childEntries: async () => [],
+      },
+      {
+        title: "Brother Louie",
+        level: level + 1,
+        icon: <span>📚</span>,
+        childEntries: async () => [],
+      },
+      {
+        title: "You Can Win If You Want",
+        level: level + 1,
+        icon: <span>📙</span>,
+        childEntries: async () => [],
+      },
+    ],
+    []
+  );
   return (
     <div className="flex flex-col items-stretch">
-      <ExplorerEntry title="Some long ass text here just for testing" />
-      <ExplorerEntry title="Bugs follow you left and right" />
-      <ExplorerEntry title="What's up Next.js community?" />
+      <ExplorerEntry
+        entry={{
+          title: "Some long ass text here just for testing",
+          level: 0,
+          icon: <span>📌</span>,
+          childEntries: async () => [],
+        }}
+      />
+      <ExplorerEntry
+        entry={{
+          title: "Bugs follow you left and right",
+          level: 0,
+          expand: true,
+          childEntries: childEntries,
+        }}
+      />
+      <ExplorerEntry
+        entry={{
+          title: "What's up Next.js community?",
+          level: 0,
+          childEntries: async () => [],
+        }}
+      />
     </div>
   );
 }
