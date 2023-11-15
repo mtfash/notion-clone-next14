@@ -91,7 +91,24 @@ export default function ExplorerEntry({ entry }: ExplorerEntryProps) {
         </div>
       </div>
 
-      {_expand && children.map((child, key) => <ExplorerEntry entry={child} key={key} />)}
+      {_expand && (
+        <div>
+          {children.length ? (
+            children.map((child, key) => <ExplorerEntry entry={child} key={key} />)
+          ) : (
+            <div
+              className={cn(
+                "px-[10px] py-[4px] font-medium text-black/40"
+              )}
+              style={{
+                paddingLeft: _level * 10 + 45,
+              }}
+            >
+              No pages inside
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
