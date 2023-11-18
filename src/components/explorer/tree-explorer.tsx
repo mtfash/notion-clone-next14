@@ -13,13 +13,13 @@ export default function TreeExplorer() {
         childEntries: async () => [
           {
             title: "Dieter Bohlen",
-            level: level + 1,
+            level: level + 2,
             icon: <span>🥁</span>,
             childEntries: async () => [],
           },
           {
             title: "Thomas Anders",
-            level: level + 1,
+            level: level + 2,
             icon: <span>🥁</span>,
             childEntries: async () => [],
           },
