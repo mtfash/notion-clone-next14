@@ -7,6 +7,25 @@ export default function TreeExplorer() {
   const childEntries = useCallback(
     async (level: number) => [
       {
+        title: "Modern Talking",
+        level: level + 1,
+        icon: <span>🎤</span>,
+        childEntries: async () => [
+          {
+            title: "Dieter Bohlen",
+            level: level + 1,
+            icon: <span>🥁</span>,
+            childEntries: async () => [],
+          },
+          {
+            title: "Thomas Anders",
+            level: level + 1,
+            icon: <span>🥁</span>,
+            childEntries: async () => [],
+          },
+        ],
+      },
+      {
         title: "Cheri Cheri Lady",
         level: level + 1,
         icon: <span>📌</span>,
@@ -31,7 +50,7 @@ export default function TreeExplorer() {
     <div className="flex flex-col items-stretch">
       <ExplorerEntry
         entry={{
-          title: "Some long ass text here just for testing",
+          title: "Some long text here just for testing",
           level: 0,
           icon: <span>📌</span>,
           childEntries: async () => [],
