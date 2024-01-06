@@ -1,76 +1,44 @@
 "use client";
 
-import { useCallback } from "react";
 import ExplorerEntry from "./entry";
+import { Page, useCreatePage, useGetPages } from "@/queries/pages.query";
+import SimpleButton from "../button/simple-button";
+import AddIcon from "../icons/add";
 
 export default function TreeExplorer() {
-  const childEntries = useCallback(
-    async (level: number) => [
-      {
-        title: "Modern Talking",
-        level: level + 1,
-        icon: <span>🎤</span>,
-        childEntries: async () => [
-          {
-            title: "Dieter Bohlen",
-            level: level + 2,
-            icon: <span>🥁</span>,
-            childEntries: async () => [],
-          },
-          {
-            title: "Thomas Anders",
-            level: level + 2,
-            icon: <span>🥁</span>,
-            childEntries: async () => [],
-          },
-        ],
+  const { data } = useGetPages();
+  const { mutate: createPage, isLoading: creatingPage } = useCreatePage();
+
+  const handleNewPage = async () => {
+    const pageData: Partial<Page> = { title: "Untitled" };
+    createPage(pageData, {
+      onSuccess(page) {
+        // TODO: open the created page in the editor
+        console.log("Page created", page);
       },
-      {
-        title: "Cheri Cheri Lady",
-        level: level + 1,
-        icon: <span>📌</span>,
-        childEntries: async () => [],
-      },
-      {
-        title: "Brother Louie",
-        level: level + 1,
-        icon: <span>📚</span>,
-        childEntries: async () => [],
-      },
-      {
-        title: "You Can Win If You Want",
-        level: level + 1,
-        icon: <span>📙</span>,
-        childEntries: async () => [],
-      },
-    ],
-    []
-  );
+    });
+  };
+
   return (
     <div className="flex flex-col items-stretch">
-      <ExplorerEntry
-        entry={{
-          title: "Some long text here just for testing",
-          level: 0,
-          icon: <span>📌</span>,
-          childEntries: async () => [],
-        }}
-      />
-      <ExplorerEntry
-        entry={{
-          title: "Bugs follow you left and right",
-          level: 0,
-          expand: true,
-          childEntries: childEntries,
-        }}
-      />
-      <ExplorerEntry
-        entry={{
-          title: "What's up Next.js community?",
-          level: 0,
-          childEntries: async () => [],
-        }}
-      />
+      {data &&
+        data.map((page) => (
+          <ExplorerEntry
+            key={page._id}
+            entry={{
+              page,
+              level: 1,
+            }}
+          />
+        ))}
+
+      <SimpleButton
+        className="flex items-center rounded-[4px] px-[10px] py-[4px] gap-3 text-black/60"
+        onClick={handleNewPage}
+      >
+        <AddIcon className="fill-black/40" />
+        Add a page
+      </SimpleButton>
     </div>
   );
 }

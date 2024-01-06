@@ -2,6 +2,7 @@
 import { MouseEvent } from "react";
 import { create } from "zustand";
 import { cn } from "@/lib/utils";
+import { stat } from "fs";
 
 type OverlayProps = {
   onClick: (e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void;
@@ -31,6 +32,7 @@ type OverlayStackChild = {
 interface OverlayStackState {
   children: OverlayStackChild[];
   push: (element: React.ReactNode, overlayClassName?: string) => void;
+  pop: () => void;
 }
 
 const useOverlayStackStore = create<OverlayStackState>((set) => ({
@@ -66,11 +68,19 @@ const useOverlayStackStore = create<OverlayStackState>((set) => ({
         children: [...state.children, child],
       };
     }),
+  pop: () =>
+    set((state) => {
+      return {
+        children: state.children.slice(0, -1),
+      };
+    }),
 }));
 
 export function useOverlayStack() {
   const push = useOverlayStackStore((state) => state.push);
-  return { push };
+  const pop = useOverlayStackStore((state) => state.pop);
+
+  return { push, pop };
 }
 
 export default function OverlayStack() {

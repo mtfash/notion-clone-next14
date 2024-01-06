@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { IconProps } from "./icon-props";
 
-export default function Add({ className }: IconProps) {
+export default function AddIcon({ className }: IconProps) {
   return (
     <svg
       role="graphics-symbol"
