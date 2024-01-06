@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { SidebarContainer } from "./sidebar-container";
 import UserProfileAction from "./actions/user-profile/user-profile-action";
@@ -7,8 +9,15 @@ import Search from "@/components/icons/search";
 import Clock from "@/components/icons/clock";
 import Gear from "@/components/icons/gear";
 import Plus from "@/components/icons/plus";
+import { useOverlayStack } from "@/components/overlay-stack";
+import NewPageModal from "@/components/page/new-page-modal";
 
 function Sidebar() {
+  const { push } = useOverlayStack();
+  const handleNewPageOnClick = () => {
+    push(<NewPageModal />, "bg-black/40");
+  };
+
   return (
     <SidebarContainer>
       <div>
@@ -26,7 +35,10 @@ function Sidebar() {
             <Gear className="fill-black/40" />
             Settings & members
           </SimpleButton>
-          <SimpleButton className="flex items-center gap-2 font-medium text-black/40">
+          <SimpleButton
+            className="flex items-center gap-2 font-medium text-black/40 "
+            onClick={handleNewPageOnClick}
+          >
             <Plus className="fill-black/40" />
             New page
           </SimpleButton>

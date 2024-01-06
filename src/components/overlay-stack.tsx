@@ -30,12 +30,12 @@ type OverlayStackChild = {
 
 interface OverlayStackState {
   children: OverlayStackChild[];
-  push: (element: React.ReactNode) => void;
+  push: (element: React.ReactNode, overlayClassName?: string) => void;
 }
 
 const useOverlayStackStore = create<OverlayStackState>((set) => ({
   children: [],
-  push: (element) =>
+  push: (element, overlayClassName?: string) =>
     set((state) => {
       const key = `element-${state.children.length}`;
 
@@ -51,7 +51,12 @@ const useOverlayStackStore = create<OverlayStackState>((set) => ({
       const child: OverlayStackChild = {
         key,
         child: (
-          <Overlay key={key} onClick={handleClose} zIndex={1000 + 10 * (state.children.length + 1)}>
+          <Overlay
+            key={key}
+            onClick={handleClose}
+            zIndex={1000 + 10 * (state.children.length + 1)}
+            className={overlayClassName}
+          >
             {element}
           </Overlay>
         ),
