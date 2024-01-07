@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { IconProps } from "./icon-props";
 
-export default function Search({ className }: IconProps) {
+export default function SearchIcon({ className }: IconProps) {
 	return (
 		<svg
 			role="graphics-symbol"

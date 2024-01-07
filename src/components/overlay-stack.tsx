@@ -15,7 +15,7 @@ function Overlay({ children, className, onClick, zIndex }: OverlayProps) {
   return (
     <div
       role="button"
-      className={cn("w-screen h-screen fixed inset-0 hover:cursor-default", className)}
+      className={cn("w-full h-screen fixed inset-0 hover:cursor-default", className)}
       onClick={onClick}
       style={{ zIndex }}
     >

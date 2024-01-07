@@ -1,20 +1,23 @@
 "use client";
 
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import SimpleButton from "../button/simple-button";
 import PageMetaHeader from "../layout/header/page-meta-header";
 import FUllScreenIcon from "../icons/fullscreen";
-import ChevronSingleRight from "../icons/chevron-single-right";
 import NewPageForm from "./new-page-form";
+import { Page } from "@/queries/pages.query";
+import { PageParentSelect } from "./page-parent-select";
 
-export default function NewPageModal() {
+type NewPageModalProps = {
+  page?: Page;
+};
+
+export default function NewPageModal({ page }: NewPageModalProps) {
   return (
     <div
       className={cn(
-        "h-[90%] w-[90%] xl:w-[40%] flex flex-col items-stretch justify-between",
-        "top-1/2 left-1/2 absolute -translate-x-1/2 -translate-y-1/2",
-        "rounded-md bg-white"
+        "h-[80%] w-[90%] xl:w-[80%] max-w-[1024px] flex flex-col items-stretch justify-between",
+        "top-1/2 left-1/2 absolute -translate-x-1/2 -translate-y-1/2 rounded-md bg-white"
       )}
     >
       <header className="flex items-center justify-between px-[10px] pt-[10px] pb-[5px]">
@@ -25,17 +28,7 @@ export default function NewPageModal() {
           <div className="px-[5px] my-[5px]">
             <div className="border-l h-[16px]"></div>
           </div>
-          <SimpleButton>
-            <div className="flex items-center gap-1">
-              <div className="text-gray-500">Add to</div>
-
-              <Image src="/usericon.png" width={22} height={22} alt="" className="rounded-full" />
-
-              <div className="font-medium">Private pages</div>
-
-              <ChevronSingleRight className="w-[10px] rotate-90" />
-            </div>
-          </SimpleButton>
+          <PageParentSelect />
         </div>
 
         <PageMetaHeader />
