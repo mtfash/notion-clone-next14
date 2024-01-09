@@ -9,15 +9,9 @@ import Search from "@/components/icons/search";
 import Clock from "@/components/icons/clock";
 import Gear from "@/components/icons/gear";
 import Plus from "@/components/icons/plus";
-import { useOverlayStack } from "@/components/overlay-stack";
-import NewPageModal from "@/components/page/new-page-modal";
+import LinkButton from "@/components/button/link-button";
 
 function Sidebar() {
-  const { push } = useOverlayStack();
-  const handleNewPageOnClick = () => {
-    push(<NewPageModal />, "bg-black/40");
-  };
-
   return (
     <SidebarContainer>
       <div>
@@ -35,13 +29,13 @@ function Sidebar() {
             <Gear className="fill-black/40" />
             Settings & members
           </SimpleButton>
-          <SimpleButton
-            className="flex items-center gap-2 font-medium text-black/40 "
-            onClick={handleNewPageOnClick}
+          <LinkButton
+            className="flex items-center gap-2 font-medium text-black/40"
+            href="/pages/new?popup=true"
           >
             <Plus className="fill-black/40" />
             New page
-          </SimpleButton>
+          </LinkButton>
         </div>
         <div className="flex-1 overflow-y-auto px-1">
           <TreeExplorer />
